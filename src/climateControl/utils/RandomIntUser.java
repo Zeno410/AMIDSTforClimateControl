@@ -3,7 +3,9 @@
  * and open the template in the editor.
  */
 
-package climateControl;
+package climateControl.utils;
+
+import climateControl.*;
 
 /**
  *

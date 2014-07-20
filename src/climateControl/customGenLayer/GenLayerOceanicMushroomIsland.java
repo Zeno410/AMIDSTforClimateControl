@@ -12,11 +12,13 @@ import genLayerPack.IntCache;
 public class GenLayerOceanicMushroomIsland extends GenLayerPack
 {
     private static final String __OBFID = "CL_00000552";
+    private final int incidence;
 
-    public GenLayerOceanicMushroomIsland(long par1, GenLayer par3GenLayer)
+    public GenLayerOceanicMushroomIsland(long par1, GenLayer par3GenLayer, int incidence)
     {
         super(par1);
         this.parent = par3GenLayer;
+        this.incidence = incidence;
     }
 
     /**
@@ -45,7 +47,7 @@ public class GenLayerOceanicMushroomIsland extends GenLayerPack
                 int k3 = aint[j2 + 1 + (i2 + 1) * k1];
                 this.initChunkSeed((long)(j2 + par1), (long)(i2 + par2));
 
-                if (k3 == deepOcean && k2 == deepOcean && l2 == deepOcean && i3 == deepOcean && j3 == deepOcean && this.nextInt(100) == 0)
+                if (k3 == deepOcean && k2 == deepOcean && l2 == deepOcean && i3 == deepOcean && j3 == deepOcean && this.nextInt(1000) < incidence)
                 {
                     aint1[j2 + i2 * par3] = BiomeGenBase.mushroomIsland.biomeID;
                 }

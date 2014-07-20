@@ -1,14 +1,7 @@
 
 package genLayerPack;
-import java.util.concurrent.Callable;
-import net.minecraft.crash.CrashReport;
-import net.minecraft.crash.CrashReportCategory;
-import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.util.ReportedException;
-import net.minecraft.world.WorldType;
+//import net.minecraft.world.biome.BiomeGenBase;
 
-import net.minecraftforge.common.*;
-import net.minecraftforge.event.terraingen.*;
 
 public abstract class GenLayerPack extends GenLayer
 {
@@ -128,27 +121,8 @@ public abstract class GenLayerPack extends GenLayer
             }
             catch (Throwable throwable)
             {
-                CrashReport crashreport = CrashReport.makeCrashReport(throwable, "Comparing biomes");
-                CrashReportCategory crashreportcategory = crashreport.makeCategory("Biomes being compared");
-                crashreportcategory.addCrashSection("Biome A ID", Integer.valueOf(p_151616_0_));
-                crashreportcategory.addCrashSection("Biome B ID", Integer.valueOf(p_151616_1_));
-                crashreportcategory.addCrashSectionCallable("Biome A", new Callable()
-                {
-                    private static final String __OBFID = "CL_00000560";
-                    public String call()
-                    {
-                        return String.valueOf(BiomeGenBase.getBiome(p_151616_0_));
-                    }
-                });
-                crashreportcategory.addCrashSectionCallable("Biome B", new Callable()
-                {
-                    private static final String __OBFID = "CL_00000561";
-                    public String call()
-                    {
-                        return String.valueOf(BiomeGenBase.getBiome(p_151616_1_));
-                    }
-                });
-                throw new ReportedException(crashreport);
+                
+                throw new RuntimeException(throwable);
             }
         }
         else
@@ -181,10 +155,4 @@ public abstract class GenLayerPack extends GenLayer
         return p_151617_2_ == p_151617_3_ && p_151617_3_ == p_151617_4_ ? p_151617_2_ : (p_151617_1_ == p_151617_2_ && p_151617_1_ == p_151617_3_ ? p_151617_1_ : (p_151617_1_ == p_151617_2_ && p_151617_1_ == p_151617_4_ ? p_151617_1_ : (p_151617_1_ == p_151617_3_ && p_151617_1_ == p_151617_4_ ? p_151617_1_ : (p_151617_1_ == p_151617_2_ && p_151617_3_ != p_151617_4_ ? p_151617_1_ : (p_151617_1_ == p_151617_3_ && p_151617_2_ != p_151617_4_ ? p_151617_1_ : (p_151617_1_ == p_151617_4_ && p_151617_2_ != p_151617_3_ ? p_151617_1_ : (p_151617_2_ == p_151617_3_ && p_151617_1_ != p_151617_4_ ? p_151617_2_ : (p_151617_2_ == p_151617_4_ && p_151617_1_ != p_151617_3_ ? p_151617_2_ : (p_151617_3_ == p_151617_4_ && p_151617_1_ != p_151617_2_ ? p_151617_3_ : this.selectRandom(new int[] {p_151617_1_, p_151617_2_, p_151617_3_, p_151617_4_}))))))))));
     }
 
-    public static byte getModdedBiomeSize(WorldType worldType, byte original)
-    {
-        WorldTypeEvent.BiomeSize event = new WorldTypeEvent.BiomeSize(worldType, original);
-        MinecraftForge.TERRAIN_GEN_BUS.post(event);
-        return event.newSize;
-    }
 }

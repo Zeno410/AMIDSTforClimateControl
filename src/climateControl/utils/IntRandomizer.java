@@ -1,4 +1,4 @@
-package climateControl;
+package climateControl.utils;
 
 /**
  * this is an abstract that allows external packages to use GenLayer random numbers

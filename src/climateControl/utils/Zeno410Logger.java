@@ -1,4 +1,4 @@
-package climateControl;
+package climateControl.utils;
 
 /*
  * author Zeno410
@@ -21,7 +21,7 @@ public class Zeno410Logger {
   static private FileHandler fileHTML;
   static private Formatter formatterHTML;
 
-  public static final boolean suppress  = false;
+  public static final boolean suppress  = true;
 
   public static void crashIfRecording(RuntimeException toThrow) {
       if (suppress) return;

@@ -2,18 +2,29 @@
 package climateControl;
 import amidst.minecraft.IMinecraftInterface;
 import amidst.version.VersionInfo;
+import climateControl.utils.Zeno410Logger;
 import genLayerPack.*;
+import java.io.File;
+import java.util.logging.Logger;
+import minecraftForge.Configuration;
 /**
  *
  * @author Zeno410
  */
 public class ClimateControledGenerator implements IMinecraftInterface {
     VersionInfo version;
+    File minecraftDirectory;
     long worldSeed;
     String worldType;
+    public static Logger logger = new Zeno410Logger("ClimateControledGenerator").logger();
+    File worldConfigFile;
+    private String CONFIG_DIRECTORY = "config";
+    private String CONFIG_FILE = "climatecontrol.cfg";
 
-    public ClimateControledGenerator(VersionInfo version) {
+    public ClimateControledGenerator(VersionInfo version, File jarFile) {
         this.version = version;
+        minecraftDirectory = jarFile.getParentFile().getParentFile().getParentFile();
+        setWorldFile();
     }
 
     public VersionInfo getVersion() {return version;}
@@ -23,10 +34,32 @@ public class ClimateControledGenerator implements IMinecraftInterface {
         worldType = type;
         //biomeLayers =  quarteredRiverMix();
         //biomeLayers = initializeAllBiomeGenerators(seed);
+        ClimateControlSettings settings = new ClimateControlSettings();
+        try {
+            Configuration config = new Configuration(worldConfigFile);
+            settings.readFrom(config);
+            logger.info("large continents "+settings.largeContinentFrequency.value());
+            logger.info("medium continents "+settings.mediumContinentFrequency.value());
+            logger.info("small continents "+settings.smallContinentFrequency.value());
+            logger.info("large islands "+settings.largeIslandFrequency.value());
+        } catch (NullPointerException e){
+            // no config file, use defaults
+            throw e;
+        }
         biomeLayers = new StackedContinentsGenerator().stackedContinents(
-                new ClimateControlSettings(), worldSeed);
+                settings, worldSeed);
     }
 
+
+    public void setWorldFile() {
+        // this is the world save directory
+        String configFileName = minecraftDirectory.getAbsoluteFile()+File.separator+CONFIG_DIRECTORY+File.separator+CONFIG_FILE;
+        this.worldConfigFile = new File(configFileName);
+        logger.info(configFileName);
+        this.worldConfigFile = new File(minecraftDirectory,CONFIG_DIRECTORY);
+        this.worldConfigFile = new File(worldConfigFile,CONFIG_FILE);
+        logger.info(worldConfigFile.getAbsolutePath());
+    }
 
     public int[] getBiomeData(int top, int left, int bottom, int right) {
         return biomeLayers.getInts(top, left, bottom, right);

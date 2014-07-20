@@ -1,6 +1,9 @@
 
 package climateControl;
 
+import climateControl.utils.IntRandomizer;
+import climateControl.utils.RandomIntUser;
+
 /**
  *
  * @author Zeno410

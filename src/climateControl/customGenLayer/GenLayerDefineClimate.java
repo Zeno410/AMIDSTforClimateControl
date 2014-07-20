@@ -28,10 +28,10 @@ public class GenLayerDefineClimate extends GenLayerPack {
     public GenLayerDefineClimate(long seed, GenLayer genLayer,ClimateControlSettings settings){
         this(seed,
                 genLayer,
-                settings.hotIncidence(),
-                settings.warmIncidence(),
-                settings.chillyIncidence(),
-                settings.snowyIncidence()) ;
+                settings.hotIncidence.value(),
+                settings.warmIncidence.value(),
+                settings.coolIncidence.value(),
+                settings.snowyIncidence.value()) ;
     }
 
     /**

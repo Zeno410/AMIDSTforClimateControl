@@ -1,7 +1,7 @@
 
 package minecraftForge;
-import static net.minecraftforge.common.config.Configuration.NEW_LINE;
-import static net.minecraftforge.common.config.Configuration.allowedProperties;
+import static minecraftForge.Configuration.NEW_LINE;
+import static minecraftForge.Configuration.allowedProperties;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

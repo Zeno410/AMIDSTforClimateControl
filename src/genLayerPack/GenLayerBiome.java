@@ -1,6 +1,6 @@
 package genLayerPack;
 
-import net.minecraft.world.WorldType;
+//import net.minecraft.world.WorldType;
 public class GenLayerBiome extends GenLayer
 {
     private BiomeGenBase[] field_151623_c;

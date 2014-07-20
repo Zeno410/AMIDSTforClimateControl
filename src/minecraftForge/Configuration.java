@@ -32,8 +32,7 @@ import java.util.regex.Pattern;
 import com.google.common.base.CharMatcher;
 import com.google.common.collect.ImmutableSet;
 
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.relauncher.FMLInjectionData;
+//import cpw.mods.fml.common.Loader;
 
 /**
  * This class offers advanced configurations capabilities, allowing to provide
@@ -75,16 +74,16 @@ public class Configuration
     public Configuration(File file)
     {
         this.file = file;
-        String basePath = ((File)(FMLInjectionData.data()[6])).getAbsolutePath().replace(File.separatorChar, '/').replace("/.", "");
-        String path = file.getAbsolutePath().replace(File.separatorChar, '/').replace("/./", "/").replace(basePath, "");
+        //String basePath = ((File)(FMLInjectionData.data()[6])).getAbsolutePath().replace(File.separatorChar, '/').replace("/.", "");
+        //String path = file.getAbsolutePath().replace(File.separatorChar, '/').replace("/./", "/").replace(basePath, "");
         if (PARENT != null)
         {
-            PARENT.setChild(path, this);
-            isChild = true;
+            //PARENT.setChild(path, this);
+            //isChild = true;
         }
         else
         {
-            fileName = path;
+            fileName = "climatecontrol";
             load();
         }
     }
@@ -681,8 +680,8 @@ public class Configuration
 
     public static void enableGlobalConfig()
     {
-        PARENT = new Configuration(new File(Loader.instance().getConfigDir(), "global.cfg"));
-        PARENT.load();
+        //PARENT = new Configuration(new File(Loader.instance().getConfigDir(), "global.cfg"));
+        //PARENT.load();
     }
 
     public static class UnicodeInputStreamReader extends Reader

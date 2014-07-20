@@ -1,6 +1,7 @@
 
 package climateControl;
 
+import climateControl.utils.IntRandomizer;
 import climateControl.customGenLayer.GenLayerRandomBiomes;
 import genLayerPack.BiomeGenBase;
 

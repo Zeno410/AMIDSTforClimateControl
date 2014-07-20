@@ -119,7 +119,7 @@ public class LocalVersionComponent extends VersionComponent {
 				try {
                     IMinecraftInterface minecraftInterface= new Minecraft(profile.getJarFile()).createInterface();
                     IMinecraftInterface climateControlInterface =
-                            new ClimateControledGenerator(minecraftInterface.getVersion());
+                            new ClimateControledGenerator(minecraftInterface.getVersion(),profile.getJarFile());
 					MinecraftUtil.setBiomeInterface(climateControlInterface);
 					new FinderWindow();
 					VersionSelectWindow.get().dispose();

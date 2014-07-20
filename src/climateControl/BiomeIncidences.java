@@ -1,5 +1,8 @@
 
 package climateControl;
+
+import minecraftForge.Configuration;
+
 /**
  *
  * @author Zeno410
@@ -45,6 +48,23 @@ public class BiomeIncidences implements Cloneable {
         //super("RandomBiomeIncidences");
     }
 
+    public void readFrom(Configuration config) {
+        birchForest = config.get(biomeFrequencyCategory, birchForestName, 10).getInt();
+        coldTaiga = config.get(biomeFrequencyCategory, coldTaigaName, 10).getInt();
+        desert = config.get(biomeFrequencyCategory, desertName, 30).getInt();
+        extremeHills = config.get(biomeFrequencyCategory, extremeHillsName, 20,"rounded down to an even number if climate zones are on").getInt();
+        forest = config.get(biomeFrequencyCategory, forestName, 20,"rounded down to an even number if climate zones are on").getInt();
+        icePlains = config.get(biomeFrequencyCategory, icePlainsName, 30).getInt();
+        jungle = config.get(biomeFrequencyCategory, jungleName, 5).getInt();
+        megaTaiga = config.get(biomeFrequencyCategory, megaTaigaName, 5).getInt();
+        mesaPlateau = config.get(biomeFrequencyCategory, mesaPlateauName, 1).getInt();
+        mesaPlateau_F = config.get(biomeFrequencyCategory, mesaPlateau_FName, 4).getInt();
+        plains = config.get(biomeFrequencyCategory, plainsName, 30,"rounded down to an number divisible by 3 if climate zones are on").getInt();
+        roofedForest = config.get(biomeFrequencyCategory, roofedForestName, 10).getInt();
+        savanna = config.get(biomeFrequencyCategory, savannaName, 20).getInt();
+        swampland = config.get(biomeFrequencyCategory, swamplandName, 10).getInt();
+        taiga = config.get(biomeFrequencyCategory, taigaName, 10).getInt();
+    }
 
     public int totalIncidences() {
         return birchForest +coldTaiga+desert+extremeHills+forest+icePlains+jungle+megaTaiga+

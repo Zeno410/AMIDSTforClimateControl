@@ -1,4 +1,6 @@
 package climateControl;
+import climateControl.utils.IntRandomizer;
+import climateControl.utils.RandomIntUser;
 import genLayerPack.GenLayer;
 import genLayerPack.IntCache;
 /**

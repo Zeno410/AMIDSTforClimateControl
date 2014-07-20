@@ -1,6 +1,6 @@
 
 package climateControl.customGenLayer;
-import climateControl.Zeno410Logger;
+import climateControl.utils.Zeno410Logger;
 import genLayerPack.GenLayerPack;
 import genLayerPack.GenLayer;
 import genLayerPack.IntCache;
